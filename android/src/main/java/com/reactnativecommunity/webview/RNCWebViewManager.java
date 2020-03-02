@@ -740,25 +740,6 @@ public class RNCWebViewManager extends SimpleViewManager<WebView> {
     }
 
     @Override
-    public boolean shouldOverrideUrlLoading(WebView view, String url) {
-      activeUrl = url;
-      dispatchEvent(
-        view,
-        new TopShouldStartLoadWithRequestEvent(
-          view.getId(),
-          createWebViewEvent(view, url)));
-      return true;
-    }
-
-
-    @TargetApi(Build.VERSION_CODES.N)
-    @Override
-    public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-      final String url = request.getUrl().toString();
-      return this.shouldOverrideUrlLoading(view, url);
-    }
-
-    @Override
     public void onReceivedError(
       WebView webView,
       int errorCode,
